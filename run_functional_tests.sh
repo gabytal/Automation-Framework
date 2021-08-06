@@ -23,7 +23,13 @@ fi
 
 sleep 10
 
+echo "Executing functional tests..."
+
 # create an automation docker client to execute tests against the server
 docker run --name automation -it --network testing -v "$(pwd):/behave:rw" automation
 
+echo
+echo "Functional tests has been executed. check result.log file"
+echo "Removing containers...."
 
+docker rm -f app-server automation
